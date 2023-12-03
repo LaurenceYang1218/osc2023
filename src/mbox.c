@@ -36,7 +36,7 @@ void get_board_revision() {
 
     uart_puts("RPI3B+ Board Revision: ");
     uart_hex(mailbox[5]);
-    uart_send('\n');
+    uart_puts("\n");
     
     return;
 }
@@ -46,8 +46,8 @@ void get_memory_info() {
     mailbox[0] = 8 * 4; // buffer size in bytes
     mailbox[1] = REQUEST_CODE;
     // tags begin
-    mailbox[2] = GET_BOARD_REVISION; // tag identifier
-    mailbox[3] = 4; // maximum of request and response value buffer's length.
+    mailbox[2] = GET_ARM_MEMORY; // tag identifier
+    mailbox[3] = 8; // maximum of request and response value buffer's length.
     mailbox[4] = TAG_REQUEST_CODE;
     mailbox[5] = 0; // value buffer
     mailbox[6] = 0; // value buffer
@@ -58,10 +58,10 @@ void get_memory_info() {
     uart_puts("RPI3B+ Memory Info: \n");
     uart_puts("  Base address: ");
     uart_hex(mailbox[5]);
-    uart_send('\n');
+    uart_puts("\n");
     uart_puts("  Size: ");
     uart_hex(mailbox[6]);
-    uart_send('\n');
+    uart_puts("\n");
     
     return;
 }

@@ -1,6 +1,7 @@
 #include "string.h"
 #include "mbox.h"
 #include "uart.h"
+#include "reboot.h"
 
 void readcmd(char* str) {
     int idx = 0;
@@ -26,7 +27,8 @@ void shell(char* str) {
         get_board_revision();
         get_memory_info();
     }else if (strcmp(str, "reboot")) {
-
+        uart_puts("Reboot...\n");
+        reset(200);
     }else {
         uart_puts(str);
         uart_puts(": command not found\n");

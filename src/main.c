@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
     while(1) {
         uart_puts("\nshell> ");
         readcmd(cmd);
-        uart_send('\n');
+        uart_puts("\n");
         if (strcmp(cmd, "exit")) {
             uart_puts("Exit from osc shell\n");
             break;
